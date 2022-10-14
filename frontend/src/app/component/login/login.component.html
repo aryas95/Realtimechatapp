@@ -1,0 +1,33 @@
+  <!-- modal start -->
+  <div class='modal-dialog text-center border'>
+       
+          
+
+    <!-- <div class="col-12 user-img">
+      <img src='assets/images/login-icon.png'>
+    </div>
+    <br> -->
+
+   
+      <h1 class="text-uppercase">Log In</h1><br>
+            <form  #form="ngForm" (ngSubmit)="form.valid && onsubmit()">
+            <label for="email" >Email</label><br>
+            <input type="email" class= "form-control" name="eml" required #email="ngModel" [(ngModel)]= "user.email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+            <label class="text-danger" *ngIf="form.submitted && email.errors?.['required'] "> enter email</label>
+            <label class="text-danger" *ngIf="form.submitted && email.errors?.['pattern']"> enter valid email</label>
+            <label for="password" >Password</label><br>
+            <input type="password" class="form-control" name="pas" required #pass="ngModel" [(ngModel)]= "user.pass" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$">
+            <label class="text-danger" *ngIf="form.submitted && pass.errors?.['required'] "> enter password</label>
+            <label class="text-danger" *ngIf="form.submitted && pass.errors?.['pattern']"> enter valid password</label>
+              <br>
+            <button type="submit"class="btn btn-warning">Log In</button><br><br>
+            <p id="pp">need an account? &nbsp; &nbsp;<a routerLink="/signup">SignUp</a></p>
+    
+        </form>
+        
+    
+  </div>
+ 
+
+<!-- modal end -->
+
