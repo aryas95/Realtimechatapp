@@ -1,7 +1,7 @@
 .modal-dialog{
-    color: white;
-  background-color: darkred;
-  padding: 15px;
+  color: white;
+  background-color: rgb(239, 114, 114);
+  padding: 25px;
   position: absolute;
   top: 50%;
   left: 50%;
