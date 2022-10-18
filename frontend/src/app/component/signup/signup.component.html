@@ -1,75 +1,134 @@
-<!-- Material form register -->
-<div class="modal-dialog mx-auto container">
+<div class="id">
+    <div class="container d-flex justify-content-center">
+      <div class="form1">
+        <mat-card>
+          <a routerLink="/"
+            ><button
+              mat-icon-button
+              aria-label="close mat-card-close"
+              mat-card-close
+            >
+              <mat-icon>home</mat-icon>
+            </button></a
+          >
+          <h1>SignUp</h1>
+          <form
+            [formGroup]="signupForm"
+            (ngSubmit)="onsubmitsignup(signupForm.value)"
+          >
+            <mat-form-field appearance="outline">
+              <mat-label>Name of user</mat-label>
+              <input
+                matInput
+                placeholder="Enter your name"
+                formControlName="name"
+              />
+              <mat-error
+                *ngIf="signup?.['name']?.errors?.['required'] && submittedsignup"
+                >Required name</mat-error
+              >
+            </mat-form-field>
 
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input
+                matInput
+                placeholder="Enter your email"
+                formControlName="email"
+              />
+              <mat-error
+                *ngIf="signup?.['email']?.errors?.['pattern'] && submittedsignup"
+                >Invalid email</mat-error
+              >
+              <mat-error
+                *ngIf="signup?.['email']?.errors?.['required'] && submittedsignup"
+                >Required email</mat-error
+              >
+            </mat-form-field>
 
-        
-    <h3 class="card-header info-color white-text text-center py-4">
-        <strong>Sign Up</strong>
-    </h3><br>
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input
+                matInput
+                placeholder="Enter your password"
+                [type]="signuphide ? 'password' : 'text'"
+                formControlName="password"
+              />
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="signuphide = !signuphide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="signuphide"
+              >
+                <mat-icon>{{
+                  signuphide ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+              <mat-error
+                *ngIf="signupForm.controls['password'].hasError('minlength')"
+              >
+                Your password must be at least 5 characters long.</mat-error
+              >
+              <mat-error
+                *ngIf="signup?.['password']?.errors?.['required'] && submittedsignup"
+                >Required password</mat-error
+              >
+            </mat-form-field>
 
-    <!--Card content-->
-    <div class="card-body px-lg-5 pt-0">
+            <mat-form-field appearance="outline">
+              <mat-label>Confim Password</mat-label>
+              <input
+                matInput
+                placeholder="Enter your password"
+                [type]="signuphide ? 'password' : 'text'"
+                formControlName="confirmpassword"
+              />
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="signuphide = !signuphide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="signuphide"
+              >
+                <mat-icon>{{
+                  signuphide ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+              <mat-error
+                *ngIf="signup?.['confirmpassword']?.errors?.['confirmpassword'] && submittedsignup"
+                >Invalid password</mat-error
+              >
+              <mat-error
+                *ngIf="signup?.['confirmpassword']?.errors?.['required'] && submittedsignup"
+                >Required password</mat-error
+              >
+              <mat-error
+                *ngIf="signup?.['confirmpassword']?.errors?.['passwordMismatch']&& submittedsignup"
+                >Mismatched password</mat-error
+              >
+            </mat-form-field>
 
-        <!-- Form -->
-        <form class="text-center" action="/signup/adduser" style="color: #757575;" onsubmit="return validate()">
+            <mat-dialog-actions class="centering">
+              <button
+                class="btn"
+                mat-raised-button
+                color="accent"
+                [disabled]="!signupForm.valid"
+              >
+                Submit
+              </button>
 
-            <div class="form-row">
-                <div class="col">
-                    <!-- First name -->
-                    <div class="md-form">
-                        <label for="fname">First name</label>
-                        <input type="text" id="fname" class="form-control" required>
-                        <label for="fname" id="fnamefeedback" style="color:red; visibility:hidden">Should contain only alphabets.</label>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <!-- Last name -->
-                    <div class="md-form">
-                        <label for="lname">Last name</label>   
-                        <input type="text" id="lname" class="form-control" required>
-                        <label for="lname" id="lnamefeedback" style="color:red; visibility:hidden">Should contain only alphabets.</label>
-                 </div>
-                </div>
-            </div>
-
-            <!-- E-mail -->
-            <div class="md-form mt-0">
-                <label for="email">E-mail</label>
-                <input id="uid" name="uid" type="email" id="email" class="form-control" required>
-                <label for="email" id="emailfeedback" style="color:red; visibility:hidden">Enter valid e-mail id.</label>
-
-            </div>
-
-
-
-
-
-            <!-- Password -->
-            <div class="md-form mt-0">
-                <label for="pwd">Password</label>
-                <input id="pwd" name="pwd" type="password" id="pwd" class="form-control" aria-describedby="materialRegisterFormPasswordHelpBlock" required>
-                <label for="pwd" id="pwdfeedback" style="color:red; visibility:hidden">Password should be minimum 8 characters</label>
-
-            </div>
-      
-            <!-- Sign up button -->
-            <!-- <button class="btn btn-outline-info btn-rounded  my-4 waves-effect z-depth-0" type="submit">Sign Up</button> -->
-            <button id="signup" name="signup" type="submit" class="btn btn-success text-center">Sign Up</button>
-            <br>
-
-            
-            <!-- Terms of service -->
-            <p>By clicking
-                <em>Sign Up</em> you agree to our
-                <a href="#" >terms of service</a>
-
-        </form>
-        <!-- End of Form -->
-
+              <br />
+              <span
+                >Already Registered?
+                <a class="link" routerLink="/login"
+                  ><span style="color: crimson">Login</span>
+                </a></span
+              >
+            </mat-dialog-actions>
+          </form>
+        </mat-card>
+      </div>
     </div>
-
-
-</div>
-<!-- End of Material form register -->
-
+  </div>
