@@ -7,7 +7,7 @@
 }
 .id{
   height:600px;  
-  background-image: url("../../assets/images/login.bg.jpg");  
+  background-image: url("../../../assets/images/login.bg.jpg");  
   background-size:cover; 
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -31,7 +31,7 @@
 }
 h1{
   text-align: center;
-  color: #ff666f;;
+  color: #611217;
 }
 a{
   color: black;
@@ -45,9 +45,12 @@ a:hover{
 
 .mat-card{
   background-color:whitesmoke;
-  border: 2px solid rgb(236, 77, 141);
+  border: 2px solid rgb(205, 86, 13);
   border-radius: .5rem;
 }
 .mat-form-field{
   width: 100%;
+}
+.btn{
+  background-color: rgb(205, 86, 13);
 }

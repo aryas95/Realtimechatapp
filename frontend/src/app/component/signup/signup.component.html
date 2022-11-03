@@ -8,7 +8,7 @@
               aria-label="close mat-card-close"
               mat-card-close
             >
-              <mat-icon>home</mat-icon>
+              <!-- <mat-icon>home</mat-icon> -->
             </button></a
           >
           <h1>SignUp</h1>
@@ -19,9 +19,9 @@
             <mat-form-field appearance="outline">
               <mat-label>Name of user</mat-label>
               <input
-                matInput
-                placeholder="Enter your name"
-                formControlName="name"
+              matInput
+              placeholder="Enter your Name"
+              formControlName="Username"
               />
               <mat-error
                 *ngIf="signup?.['name']?.errors?.['required'] && submittedsignup"
@@ -32,9 +32,9 @@
             <mat-form-field appearance="outline">
               <mat-label>Email</mat-label>
               <input
-                matInput
-                placeholder="Enter your email"
-                formControlName="email"
+              matInput
+              placeholder="Enter your Email"
+              formControlName="Email"
               />
               <mat-error
                 *ngIf="signup?.['email']?.errors?.['pattern'] && submittedsignup"
@@ -49,10 +49,10 @@
             <mat-form-field appearance="outline">
               <mat-label>Password</mat-label>
               <input
-                matInput
-                placeholder="Enter your password"
-                [type]="signuphide ? 'password' : 'text'"
-                formControlName="password"
+              matInput
+              placeholder="Enter your password"
+              [type]="signuphide ? 'password' : 'text'"
+              formControlName="confirmpassword"
               />
               <button
                 mat-icon-button
@@ -80,7 +80,7 @@
               <mat-label>Confim Password</mat-label>
               <input
                 matInput
-                placeholder="Enter your password"
+                placeholder="Confirm your password"
                 [type]="signuphide ? 'password' : 'text'"
                 formControlName="confirmpassword"
               />
