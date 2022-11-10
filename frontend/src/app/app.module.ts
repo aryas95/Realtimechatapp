@@ -1,44 +1,36 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule} from '@angular/common/http'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { AuthService } from './auth.service';
+import { OTPComponent } from './otp/otp.component';
+import { ChatboardComponent } from './chatboard/chatboard.component';
+import { UsernameComponent } from './username/username.component';
 
-import { ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatButtonModule} from '@angular/material/button';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatCardModule} from '@angular/material/card';
-import {MatInputModule} from '@angular/material/input';
-import {MatIconModule} from '@angular/material/icon';
-import {MatDialogModule} from '@angular/material/dialog';
-import { LoginComponent } from './component/login/login.component';
-import { SignupComponent } from './component/signup/signup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    SignupComponent,
     LoginComponent,
-    SignupComponent
+    OTPComponent,
+    ChatboardComponent,
+    UsernameComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
     MatFormFieldModule,
-    MatButtonModule,
-    MatTabsModule,
-    MatCardModule,
-    MatInputModule,
-    MatIconModule,
-    MatDialogModule
-
-
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
